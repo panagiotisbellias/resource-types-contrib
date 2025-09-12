@@ -1,0 +1,34 @@
+1. Check Existing Schema
+    - Look in the repo under the resource type schemas directory.
+    - See if there is already a mongodb schema.
+        - If no → create a new schema (JSON/YAML) that defines:
+            - Required properties (e.g., name, version, replicas, storage size, credentials).
+            - Optional properties (backup, persistence, resource limits).
+            - Validation rules and defaults.
+2. Create Kubernetes Recipe in Terraform
+    - In the recipes folder, add a Terraform recipe for deploying MongoDB into Kubernetes.
+    Suggested approach:
+        - Use a Helm chart or Terraform Kubernetes provider (depending on repo conventions).
+        - Ensure it provisions MongoDB StatefulSet/Deployment, Service, ConfigMap/Secret for credentials.
+        - Map Terraform inputs to your schema properties.
+        - Verify naming convention and structure matches repo contribution guide.
+3. Add README Documentation
+        - In the new resource folder, create a README.md describing:
+            - Resource type purpose (MongoDB database for applications).
+            - Schema fields with explanations.
+            - Usage instructions (how to deploy via Terraform in Kubernetes).
+            - Example resource definition + sample application using it.
+            - Reference links to built-in MongoDB type and Kubernetes recipe (as in issue text).
+4. Manual Testing
+    - Deploy an app that depends on MongoDB using your resource type and recipe:
+    - Define a sample app manifest (e.g., a simple Node.js or Python app).
+    - Use your resource type to provision MongoDB.
+    - Confirm the app can connect and perform basic CRUD operations.
+    - Document the test steps and results (either in README or PR description).
+5. Verify Contribution Requirements
+    - Check repo structure & naming conventions from the contribution guide.
+
+Ensure:
+- Folder structure follows existing resource type examples.
+- Schema, recipes, docs are placed in correct subdirectories.
+- Filenames are lowercase and consistent.
